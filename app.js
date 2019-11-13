@@ -107,8 +107,16 @@ app.post('/restaurants/:id', (req, res) => {
 
 // 刪除restaurant
 app.post('/restaurants/:id/delete', (req, res) => {
-  res.send('刪除restaurant')
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err)
+    restaurant.remove(err => {
+      if (err) return console.error(err)
+      return res.redirect('/')
+    })
+  })
 })
+
+app.get('/search', (req, res) => { })
 
 // 啟動並監聽伺服器
 app.listen(3000, () => {

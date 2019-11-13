@@ -40,7 +40,12 @@
             <div class="card-footer text-center">
               <a class="btn btn-warning mr-5" href="/restaurants/{{{this.id}}}/edit" role="button"><i
                   class="fas fa-edit"></i></a>
-              <a class="btn btn-danger mr-5" href="/" role="button" type="submit"><i class="fas fa-trash-alt"></i></a>
+
+              <form method="POST" action="/restaurants/{{{this.id}}}/delete" style="display: inline;">
+                <button class="btn btn-danger mr-5" type="submit">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </form>
             </div>
           </div>
         </a>
