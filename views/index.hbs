@@ -17,10 +17,10 @@
 </div>
 
 <div class="container mt-5">
-  <div class="row">
-    <div class="col-md-10 col-12 mx-auto">
-      <div class="card-columns">
-        {{#each restaurants}}
+  <div class="row mx-auto">
+    {{#each restaurants}}
+    <div class="col-md-4 col-4">
+      <div class="card-rows">
         <a href="/restaurants/{{this.id}}" class="text-secondary">
           <div class="card mb-3">
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
@@ -39,7 +39,14 @@
             </div>
           </div>
         </a>
-        {{/each}}
+      </div>
+    </div>
+    {{/each}}
+    <div class="col-md-4 col-4 mb-3 text-center">
+      <div class="card new-item pt-5 pb-5">
+        <div class="icon-wrapper pt-4 pb-4">
+          <a href="/restaurants/new"><i class="fas fa-plus-circle fa-3x pt-5 pb-5"></i></a>
+        </div>
       </div>
     </div>
   </div>

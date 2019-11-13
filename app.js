@@ -47,12 +47,27 @@ app.get('/restaurants', (req, res) => {
 
 // 新增一間restaurant頁面
 app.get('/restaurants/new', (req, res) => {
-  res.send('新增restaurant頁面')
+  res.render('new')
 })
 
 // 新增一間restaurant
 app.post('/restaurants', (req, res) => {
-  res.send('建立restaurant')
+  // 建立Restaurant model的實例
+  const restaurant = new Restaurant({
+    name: req.body.name,
+    category: req.body.category,
+    image: req.body.image,
+    location: req.body.location,
+    google_map: req.body.google_map,
+    phone: req.body.phone,
+    rating: req.body.rating,
+    description: req.body.description
+  })
+  // 存入資料庫
+  restaurant.save(err => {
+    if (err) return console.error(err)
+    return res.redirect('/')  //儲存完成後，導回首頁
+  })
 })
 
 // 顯示一間restaurant的詳細資訊

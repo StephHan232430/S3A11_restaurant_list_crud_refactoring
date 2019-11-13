@@ -64,6 +64,10 @@ header {
   white-space:nowrap;
 }
 
+.new-item {
+  border-style: dashed;
+}
+
 .restaurant-category {
   color: #666666;
   font-size: 0.8rem;
