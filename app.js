@@ -71,8 +71,11 @@ app.post('/restaurants', (req, res) => {
 })
 
 // 顯示一間restaurant的詳細資訊
-app.get('restaurants/:id', (req, res) => {
-  res.send('顯示restaurant的詳細內容')
+app.get('/restaurants/:id', (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err)
+    return res.render('detail', { restaurant })
+  })
 })
 
 // 修改restaurant頁面
