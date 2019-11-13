@@ -105,6 +105,14 @@ app.post('/restaurants/:id', (req, res) => {
   })
 })
 
+// 確認刪除restaurant頁面
+app.get('/restaurants/:id/delete', (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err)
+    return res.render('warning', { restaurant })
+  })
+})
+
 // 刪除restaurant
 app.post('/restaurants/:id/delete', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
@@ -116,7 +124,20 @@ app.post('/restaurants/:id/delete', (req, res) => {
   })
 })
 
-app.get('/search', (req, res) => { })
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword
+  Restaurant.find((err, restaurants) => {
+    if (err) console.error(err)
+    const matchedRestaurants = restaurants.filter(restaurant => {
+      return restaurant.name.toLowerCase().includes(keyword.toLowerCase()) || restaurant.category.toLowerCase().includes(keyword.toLowerCase())
+    })
+    res.render('index', { restaurants: matchedRestaurants, keyword })
+  })
+  // const matchedRestaurants = restaurantList.results.filter(item => {
+  //   return item.name.toLowerCase().includes(keyword.toLowerCase()) || item.category.toLowerCase().includes(keyword.toLowerCase())
+  // })
+  // res.render('index', { restaurants: matchedRestaurants, keyword: keyword })
+})
 
 // 啟動並監聽伺服器
 app.listen(3000, () => {
