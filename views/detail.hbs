@@ -29,6 +29,14 @@
         {{{restaurant.phone}}}
       </p>
 
+      <p class="mb-1">
+        <span class="text-secondary">
+          <i class="fas fa-star mr-1 fa-xs"></i>
+          評分：
+        </span>
+        {{{restaurant.rating}}}
+      </p>
+
       <p class="mb-5">
         {{{restaurant.description}}}
       </p>
@@ -37,11 +45,16 @@
         style="max-width: 600px;">
     </div>
     <div class="button-wrapper w-100 text-center">
-      <a class="btn btn-secondary mr-5" href="/" role="button">Back</a>
-      <a class="btn btn-warning mr-5" href="/" role="button">Edit</a>
-      <input class="btn btn-danger" type="submit" value="Delete">
+      <a class="btn btn-secondary mr-5" href="/" role="button"><i class="fas fa-chevron-left pr-2"></i>Home</a>
+
+      <a class="btn btn-warning mr-5" href="/restaurants/{{{restaurant.id}}}/edit" role="button"><i
+          class="fas fa-edit pr-3"></i>Edit</a>
+
+      <button class="btn btn-danger mr-5" type="submit">
+        <i class="fas fa-trash-alt pr-2"></i>
+        <a href="/"></a>
+        Delete
+      </button>
     </div>
   </div>
-
-
 </div>
