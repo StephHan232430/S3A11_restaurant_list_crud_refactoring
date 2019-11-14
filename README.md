@@ -30,12 +30,12 @@ cd S3A11_restaurant_list_crud_refactoring
 npm install
 ```
 
-4. 進入 /models/seeds 資料夾，於terminal輸入指令匯入種子資料connected!
+4. 進入 /models/seeds 資料夾，於terminal輸入指令匯入種子資料
 ```
 node restaurantSeeder.js
 ```
 
-5. 輸入後待terminal出現db connected！即表示種子資料已新增至資料庫
+5. 輸入後待terminal出現db connected! 即表示種子資料已新增至資料庫
 
 6. 執行專案
 ```
