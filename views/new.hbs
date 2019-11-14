@@ -1,9 +1,9 @@
 <form method="POST" action="/restaurants">
   <h1 class="mb-1 restaurant-english-title">英文餐廳名：
-    <input type="text" name="name_en">
+    <input type="text" name="name_en" required>
   </h1>
   <h1 class="mb-1 restaurant-show-title">中文餐廳名：
-    <input type="text" name="name">
+    <input type="text" name="name" required>
   </h1>
   <div class="container">
     <div class="row">
@@ -13,7 +13,7 @@
           <span class="text-secondary">
             <i class="fas fa-utensils pr-2"></i>
             類別：
-            <input type="text" name="category">
+            <input class="col-3" type="text" name="category" required>
           </span>
         </p>
 
@@ -21,7 +21,7 @@
           <span class="text-secondary">
             <i class="fas fa-mobile-alt pr-2"></i>
             圖片：
-            <input type="text" name="image">
+            <input class="col-3" type="url" name="image" required>
           </span>
         </p>
 
@@ -29,7 +29,7 @@
           <span class="text-secondary">
             <i class="fas fa-map-marker-alt pr-2"></i>
             地址：
-            <input type="text" name="location">
+            <input class="col-3" type="text" name="location" required>
           </span>
         </p>
 
@@ -37,7 +37,7 @@
           <span class="text-secondary">
             <i class="fas fa-location-arrow pr-1 fa-xs"></i>
             地圖：
-            <input type="text" name="google_map">
+            <input class="col-3" type="url" name="google_map" required>
           </span>
         </p>
 
@@ -45,7 +45,7 @@
           <span class="text-secondary">
             <i class="fas fa-mobile-alt pr-2"></i>
             電話：
-            <input type="text" name="phone">
+            <input class="col-3" type="tel" name="phone" required>
           </span>
         </p>
 
@@ -53,7 +53,7 @@
           <span class="text-secondary">
             <i class="fas fa-star mr-1 fa-xs"></i>
             評分：
-            <input type="number" name="rating" step="0.05">
+            <input class="col-3" type="number" min="0" max="5" name="rating" step="0.05" required>
           </span>
         </p>
 
@@ -61,7 +61,7 @@
           <span class="text-secondary">
             <i class="fas fa-info pr-2"></i>
             描述：
-            <input type="text" name="description">
+            <input class="col-3" type="text" name="description">
           </span>
         </p>
 
