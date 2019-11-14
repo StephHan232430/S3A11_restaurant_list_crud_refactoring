@@ -1,11 +1,13 @@
-<form method="POST" action="/restaurants/{{{restaurant.id}}}">
-  <h1 class="mb-1 restaurant-show-title">餐廳名：
+<form method="POST" action="/restaurants/{{{restaurant.id}}}?_method=PUT">
+  <h1 class="mb-1 restaurant-english-title">英文餐廳名：
+    <input type="text" name="name_en" value="{{{restaurant.name_en}}}">
+  </h1>
+  <h1 class="mb-1 restaurant-show-title">中文餐廳名：
     <input type="text" name="name" value="{{{restaurant.name}}}">
   </h1>
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-10 mx-auto text-center">
-
         <p class="mb-1">
           <span class="text-secondary">
             <i class="fas fa-utensils pr-2"></i>
@@ -62,10 +64,9 @@
           </span>
         </p>
 
-        <a class="btn btn-secondary mr-5" href="/restaurants/{{{restaurant.id}}}" role="button">Cancel</a>
+        <a class="btn btn-secondary mr-5" href="{{{backURL}}}" role="button">Cancel</a>
         <button class="btn btn-success" type="submit">
-          <i class="far fa-plus-square pr-2"></i>
-          {{!-- <a href="/restaurants/{{{restaurant.id}}}/edit"></a> --}}
+          <a href="/restaurants/{{{restaurant.id}}}"></a>
           Save
         </button>
       </div>
