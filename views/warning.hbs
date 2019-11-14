@@ -4,7 +4,7 @@
     <div class="card-body">
       <h5 class="card-title">
         取消刪除請按
-        <a href="/restaurants/{{{restaurant.id}}}" class="btn btn-secondary">Cancel</a>
+        <a href="{{{backURL}}}" class="btn btn-secondary">Cancel</a>
         ，確認刪除請按
         <form method="POST" action="/restaurants/{{{restaurant.id}}}/delete?_method=DELETE" style="display: inline;">
           <button class="btn btn-danger mr-5" type="submit">

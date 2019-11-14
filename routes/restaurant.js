@@ -156,9 +156,10 @@ router.put('/:id', (req, res) => {
 
 // 確認刪除restaurant頁面
 router.get('/:id/delete', (req, res) => {
+  const backURL = req.headers.referer
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
-    return res.render('warning', { restaurant })
+    return res.render('warning', { restaurant, backURL })
   })
 })
 
