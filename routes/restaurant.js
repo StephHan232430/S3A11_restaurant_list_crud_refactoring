@@ -6,66 +6,41 @@ router.get('/', (req, res) => {
   return res.redirect('/restaurants')
 })
 
-// A-Z排列
-router.get('/ascend', (req, res) => {
-  const sortType = '英文店名A-Z'
+// sorting功能
+router.get('/:sort', (req, res) => {
+  let sort
+  let sortType
+  switch (req.params.sort) {
+    case 'ascend':
+      sort = { name_en: 'asc' }
+      sortType = '英文店名A-Z'
+      break
+    case 'descend':
+      sort = { name_en: 'desc' }
+      sortType = '英文店名Z-A'
+      break
+    case 'category':
+      sort = { category: 'asc' }
+      sortType = '類型'
+      break
+    case 'location':
+      sort = { location: 'asc' }
+      sortType = '地區'
+      break
+    case 'ratingDescend':
+      sort = { rating: 'desc' }
+      sortType = '評分高至低'
+      break
+    case 'ratingAscend':
+      sort = { rating: 'asc' }
+      sortType = '評分低至高'
+      break
+    default:
+      sort = { _id: 'asc' }
+      break
+  }
   Restaurant.find({})
-    .sort({ name_en: 'asc' })
-    .exec((err, restaurants) => {
-      if (err) return console.error(err)
-      return res.render('index', { restaurants, sortType })
-    })
-})
-
-// Z-A排列
-router.get('/descend', (req, res) => {
-  const sortType = '英文店名Z-A'
-  Restaurant.find({})
-    .sort({ name_en: 'desc' })
-    .exec((err, restaurants) => {
-      if (err) return console.error(err)
-      return res.render('index', { restaurants, sortType })
-    })
-})
-
-// 類別分類排列
-router.get('/category', (req, res) => {
-  const sortType = '類型'
-  Restaurant.find({})
-    .sort({ category: 'asc' })
-    .exec((err, restaurants) => {
-      if (err) return console.error(err)
-      return res.render('index', { restaurants, sortType })
-    })
-})
-
-// 地區分類排列
-router.get('/location', (req, res) => {
-  const sortType = '地區'
-  Restaurant.find({})
-    .sort({ location: 'asc' })
-    .exec((err, restaurants) => {
-      if (err) return console.error(err)
-      return res.render('index', { restaurants, sortType })
-    })
-})
-
-// 評分高至低排列
-router.get('/ratingDescend', (req, res) => {
-  const sortType = '評分高至低'
-  Restaurant.find({})
-    .sort({ rating: 'desc' })
-    .exec((err, restaurants) => {
-      if (err) return console.error(err)
-      return res.render('index', { restaurants, sortType })
-    })
-})
-
-// 評分低至高排列
-router.get('/ratingAscend', (req, res) => {
-  const sortType = '評分低至高'
-  Restaurant.find({})
-    .sort({ rating: 'asc' })
+    .sort(sort)
     .exec((err, restaurants) => {
       if (err) return console.error(err)
       return res.render('index', { restaurants, sortType })
